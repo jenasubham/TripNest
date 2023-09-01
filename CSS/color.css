@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+    
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"; */
+  font-family: 'Poppins', sans-serif;
+}
+*{
+  margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+:root{
+  --bg-color: #dfe6ff;
+  --text-color:rgba(0, 0, 0, 0.767);
+  --pic-bc:   #D9AFD9;  /* background-color: */
+  --pic-bc-img: linear-gradient(0deg, #D9AFD9 0%, #97D9E1 100%)/* background-image: */
+
+  --justify_Content: justify-content;
+  --font_size: 0.75rem;
+  --SMALL_font_size: 0.65rem;
+  --background_color_for_top_li: #f2f2f2;
+  --font_size14: 0.8rem;
+  --Box_shadow_0_0_grey: 0px 0px 5px grey;
+  --margin_top: 0.5rem;
+  --font_color: rgb(61, 61, 61);
+  --width_80per: 80%;
+   }
+   a {
+    text-decoration: none;
+    color: var(--font_color);
+  }
+  
+  .ring {
+    border: 1px solid red;
+  }
+  
+  .flex {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .flex_wrap{
+    flex-wrap: wrap;
+  }
+  
+  .space_between {
+    justify-content: space-between;
+  }
+  
+  .space_around {
+    justify-content: space-around;
+  }
+  
+  .space_evenly {
+    justify-content: space-evenly;
+  }
+  
+  /* ==============ALL GENERAL CSS END HERE========= */
+ 

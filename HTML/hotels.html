@@ -1,0 +1,790 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        Gotrip | Hotels
+    </title>
+
+    <!-- stylesheet -->
+    <link rel="stylesheet" href="../CSS/hotels.css">
+    <link rel="stylesheet" href="../CSS/color.css" />
+    <link rel="stylesheet" href="../CSS/MainPageStyle.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+
+    <!--***************** Front Page of Hotels of makeMyTrip ********************* -->
+
+<!-- ==================TOP  BLUE  BOX DETAILS STARTS FROM HERE====================== -->
+<section id="bgcolor">
+    <!-- ===========================1ST PORTION STARTS============================ -->
+
+    <div class="mid_portion fle">
+      <div class="allicon rin flex" id="All_icon">
+        <ul class="seprate_elements top_nav_bar">
+          <li onclick="a()">
+            <img
+              class="flight"
+              src="../icons/allnavicon/icons8-airplane-take-off-50.png"
+              alt=""
+            />
+            <p>Flight</p>
+          </li>
+
+          <li>
+            <a href="./html/hotels.html" target="_blank">
+              <img src="../icons/allnavicon/icons8-hotel-50.png" alt="" />
+              <p>Hotels</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="./html/homestays.html" target="_blank">
+              <img
+                src="../icons/allnavicon/icons8-house-with-a-garden-50.png"
+                alt=""
+              />
+              <p>Homestays</p>
+            </a>
+          </li>
+
+          <li>
+            <a href="./html/holiday-packages.html" target="_blank">
+              <img src="../icons/allnavicon/icons8-balloon-5011.png" alt="" />
+              <p>Packages</p>
+            </a>
+          </li>
+
+          <li>
+            <img src="../icons/allnavicon/icons8-locomotive-50.png" alt="" />
+            <p>Trains</p>
+          </li>
+          <li>
+            <img src="../icons/allnavicon/icons8-bus-50.png" alt="" />
+            <p>Buses</p>
+          </li>
+          <li>
+            <img src="../icons/allnavicon/icons8-taxi-50.png" alt="" />
+            <p>Cabs</p>
+          </li>
+          <!-- <li>
+          <img
+            src="./icons/allnavicon/icons8-money-yours-50.png"
+            alt=""
+          />
+          <p>Forex</p>
+        </li> -->
+          <!-- <li>
+          <img src="./icons/allnavicon/icons8-airplane-50.png" alt="" />
+          <p>Charter</p>
+        </li> -->
+
+          <!-- <li>
+          <img src="./icons/allnavicon/icons8-trekking-50.png" alt="" />
+          <p>Activities</p>
+        </li> -->
+        </ul>
+      </div>
+    </div>
+    <!-- ===========================1ST PORTION ENDS============================ -->
+
+    <!-- ===========================2ND PORTION STARTS============================ -->
+    <div class="wrapper rin">
+      <div class="all_radio_btn flex space_between">
+        <div class="all_radio_btn">
+            <ul>
+              <li>
+                <input name="roomselect" type="radio" id="4rooms" checked />
+                <label for="4rooms">Upto 4 Rooms</label>
+              </li>
+
+              <li>
+                <input name="roomselect" type="radio" id="groupdeal" />
+                <label for="groupdeal">Group Deals</label>
+              </li>
+
+            <li style="background-color: red; font-size: 10px; color: white;">
+              NEW
+            </li>
+          </ul>
+        </div>
+        <div>Book Domestic and International Property Online.</div>
+      </div>
+      
+
+      <div class="mid_part flex space_evenly">
+        <label class="first_box all_Box widthtf" id="flight_from">
+          <h4>FROM</h4>
+          <h1 id="City-Name">Delhi</h1>
+          <p>
+            <span id="Airport-Code">DEL</span>,<span id="Airport-Name">
+              Delhi Airport India</span
+            >
+          </p>
+        </label>
+        <div class="hide_element Searching_box">
+          <!-- ======================================================= -->
+          <div class="box_one">
+            <div class="flex space_between" id="input_outer">
+              <div>
+                <i
+                  class="fa fa-search"
+                  style="font-size: 21px; color: grey"
+                ></i>
+              </div>
+              <div id="Input_div">
+                <input type="text" id="input_box_from" placeholder="FROM" />
+              </div>
+            </div>
+            <div id="All_data">
+              <p style="font-size: 12px; margin: 9px">RECENT SEARCH</p>
+            </div>
+          </div>
+          <!-- ============================================== -->
+        </div>
+
+        <label class="all_Box widthtf" id="flight_to">
+          <h4>TO</h4>
+          <h1 id="City-Name1">Kolkata</h1>
+          <p>
+            <span id="Airport-Code1">CCU</span>,<span id="Airport-Name1"
+              >NSCB</span
+            >
+          </p>
+        </label>
+        <div class="hide_element Searching_box1">
+          <!-- ======================================================= -->
+          <div class="box_one1">
+            <div class="flex space_between" id="input_outer1">
+              <div>
+                <i
+                  class="fa fa-search"
+                  style="font-size: 21px; color: grey"
+                ></i>
+              </div>
+              <div id="Input_div1">
+                <input type="text" id="input_box_from1" placeholder="To" />
+              </div>
+            </div>
+            <div id="All_data1">
+              <p style="font-size: 12px; margin: 9px">RECENT SEARCH</p>
+            </div>
+          </div>
+          <!-- ============================================== -->
+        </div>
+
+        <div class="all_Box CalenderBox" id="Section_to">
+          <h4>
+            DEPARTURE
+            <i
+              class="fa fa-angle-down"
+              style="font-size: 20px; color: rgb(54, 82, 193)"
+            ></i>
+          </h4>
+          <div class="error_date" style="color: red; display: none">
+            *select day name
+          </div>
+          <div class="flex Dateposition">
+            <h1 class="month_day">26</h1>
+            <span class="month_name"> Jan </span
+            ><span class="year_number">2023</span>
+          </div>
+          <p class="day_to_display">Thu</p>
+        </div>
+
+        <div class="all_Box CalenderBox">
+          <h4>
+            RETURN
+            <i
+              class="fa fa-angle-down"
+              style="font-size: 20px; color: rgb(54, 82, 193)"
+            ></i>
+          </h4>
+          <!-- <h1>Delhi</h1> -->
+          <p>Tap to add the date</p>
+        </div>
+
+        <div
+          class="all_Box rightMost"
+          style="border: none"
+          id="Travellers_count"
+        >
+          <h4>
+            TRAVELLERS & CLASS
+            <i
+              class="fa fa-angle-down"
+              style="font-size: 20px; color: rgb(54, 82, 193)"
+            ></i>
+          </h4>
+
+          <div>
+            <strong><span class="travel-number">1</span></strong>
+            <span> TRAVELLERS </span>
+          </div>
+
+          <p class="Same_font" id="class-type">Economy/Premium Economy</p>
+          <p class="Same_font" id="golden_text">Group Booking Available</p>
+        </div>
+      </div>
+
+      <!-- ===========================2ND PORTION ENDS============================ -->
+      <!-- ===========================3RD PORTION STARTS============================ -->
+
+      <div class="search_button flex">
+        <a href="./html/searchPage.html"><button>SEARCH</button></a>
+      </div>
+    </div>
+  </section>
+  
+  <!-- ==================TOP BOX DETAILS ENDS FROM HERE====================== -->
+
+
+
+  <!--  -----------------Adds Box HTML-----------------------------  -->
+<div class="adds-box inner-container">
+    <img src="../images/hotels/download.webp" alt="" class="inner-container flex">
+</div>
+
+
+
+
+<!-- ===============SLIDER STARTS FROM HERE========================= -->
+    <div class="slider_main">
+            <ul>
+              <li><h1>Offers</h1></li>
+    
+              <li><h4>ALL OFFERS</h4></li>
+              <li><h4>FLIGHTS</h4></li>
+              <li><h4>HOTELS</h4></li>
+              <li><h4>HOLIDAYS</h4></li>
+              <li><h4>TRAINS</h4></li>
+              <li><h4>CABS</h4></li>
+              <li><h4>BANK OFFERS</h4></li>
+              <li><h4>OTHERS</h4></li>
+            </ul>
+            <hr />
+    
+            <div class="two_div">
+              <div>
+                <div class="slider-container">
+                  <div class="slider">
+                    <div class="slides">
+                      <div id="slides__1" class="slide">
+    
+                        <span class="slide__text"></span>
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <a
+                              href="./html/pleasant-journey-sale.html"
+                              target="_blank"
+                              class="font_color"
+                              >View Details</a
+                            >
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_02.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>
+                              <a
+                                href="./html/malaysia-airlines-offer.html"
+                                target="_blank"
+                                class="font_color"
+                                >View Details</a
+                              >
+                            </p>
+                          </div>
+                        </div>
+    
+    
+                        
+    
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_03.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_04.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__2" class="slide">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_05.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_06.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                       
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_07.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_08.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__3" class="slide koko">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_09.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_10.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                         
+                        
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_11.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_12.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__4" class="slide">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                        
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="../images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+    </div> 
+<!-- ===============SLIDER ENDS FROM HERE========================= -->
+
+
+
+    <!--  ---------------mmt lux selections HTML---------------------  -->
+<section class="mmt-lux-box max-container-size flex-box boxshadow">
+        <div class="mmt-lux-disc inner-container">
+            <p>INTRODUCING</p>
+            <h1>MMT Luxe</h1>
+            <h1>Selections</h1>
+            <p class="para">Escape to the epitome of luxury, packed</p>
+            <p class="para">with signature amenities and services</p>
+            <button class="cursor-pointer">Learn More</button>
+        </div>
+        <div class="cards flex-box">
+            <div class="card-container">
+                <div>
+                    <img src="../images/hotels/brands.webp" alt="">
+                </div>
+                <div>
+                    <h3>Luxe properties in India</h3>
+                    <p>Explore by Luxury brands,</p>
+                    <p>themes & top picks</p>
+                </div>
+            </div>
+            <div class="card-container">
+                <div>
+                    <img src="../images/hotels/luxe_villa.webp" alt="">
+                </div>
+                <div>
+                    <h3>Luxe Villas</h3>
+                    <p>Premium Villas with Superlative</p>
+                    <p>Experience</p>
+                </div>
+            </div>
+            <div class="card-container">
+                <div>
+                    <img src="../images/hotels/maldives.webp" alt="">
+                </div>
+                <div>
+                    <h3>Luxe International</h3>
+                    <p>Dubai, Maldives, Thailand &</p>
+                    <p>More</p>
+                </div>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+    <!--  -----------------City List Box HTML------------------------  -->
+    <section class="wrapper-city-box max-container-size flex-box boxshadow">
+        <div class="city flex-box">
+            <img src="../images/hotels/GoaDT.webp" alt="">
+            <div>
+                <h3>Goa</h3>
+                <p class="small-font">Hotels, Budget Hotels, Resorts, Best Hotels, North Goa, Villas</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/DelhiDT.webp" alt="">
+            <div>
+                <h3>Delhi</h3>
+                <p class="small-font">Hotels, Budget Hotels, Resorts, Best Hotels, Near IGI Airport</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/BangaloreDT.webp" alt="">
+            <div>
+                <h3>Banglaore</h3>
+                <p class="small-font">Hotels, Budget Hotels, Resorts,Near Airport, Guhantara Resort</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/50x50-Ooty-23052019.webp" alt="">
+            <div>
+                <h3>Ooty</h3>
+                <p class="small-font">Hotels, Resorts, Cottges, Budget Hotels, Homestay</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/MumbaiDT.webp" alt="">
+            <div>
+                <h3>Mumbai</h3>
+                <p class="small-font">Hotels, Budget Hotels, Resorts, Couple Hotels, Near Mumbai Airport</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/50x50-Shimla-23052019.webp" alt="">
+            <div>
+                <h3>Shimla</h3>
+                <p class="small-font">Hotels, Budget Hotels, Best Hotels, Resorts, Near Mall Road</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/JaipurDT.webp" alt="">
+            <div>
+                <h3>Jaipur</h3>
+                <p class="small-font">Hotels, Resorts, Budget Hotels, Best Hotels, Near Railway Station</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/50x50-Manali-23052019.webp" alt="">
+            <div>
+                <h3>Manali</h3>
+                <p class="small-font">Hotels, Resorts, Budget Hotels, Best Hotels, Near Mall Road</p>
+            </div>
+        </div>
+        <div class="city flex-box">
+            <img src="../images/hotels/50x50-Other-23052019.webp" alt="">
+            <div>
+                <h3>Others</h3>
+                <p class="small-font">Puri Hotels, OYO Delhi, Alleppey Houseboat, Mahabaleshwar Hotels,</p>
+            </div>
+        </div>
+    </section>
+
+    <!--  ----------------------Footer HTML--------------------------  -->
+
+    <!--  --------------Footer Portion-Middle Box HTML---------------  -->
+    <div class="footer-color boxshadow">
+        <section class="footer-middle max-container-size flex-box">
+            <div class="footer-middle-one-unit">
+                <h4 class="question">Why Book on the Country's Best Travel Site?</h4>
+                <div class="answer font10px">Now, suppose you are travelling to Goa. All you have to do is click on the
+                    'Hotels' tab on the homepage, and press the 'Domestic' button. After typing Goa under the 'I WANT TO
+                    GO' header, select your option. Then, enter the check-in and check-out dates, and tell us the number
+                    of adults and children, for whom the booking is to be made. On clicking the 'Search Hotels' button,
+                    all the accommodation options are displayed on a single page. To make your task easier, our portal
+                    is provided with filters that you can use to narrow down your search. You can refine the results on
+                    the basis of star category, location, area, price range and even the facilities you want.</div>
+            </div>
+            <div class="footer-middle-one-unit">
+                <h4 class="question">How to book hotels on Makemytrip.com?</h4>
+                <div class="answer font10px">Now, suppose you are travelling to Goa. All you have to do is click on the
+                    'Hotels' tab on the homepage, and press the 'Domestic' button. After typing Goa under the 'I WANT TO
+                    GO' header, select your option. Then, enter the check-in and check-out dates, and tell us the number
+                    of adults and children, for whom the booking is to be made. On clicking the 'Search Hotels' button,
+                    all the accommodation options are displayed on a single page. To make your task easier, our portal
+                    is provided with filters that you can use to narrow down your search. You can refine the results on
+                    the basis of star category, location, area, price range and even the facilities you want.</div>
+            </div>
+            <div class="footer-middle-one-unit">
+                <h4 class="question">What Makemytrip.com has in store for you?</h4>
+                <div class="answer font10px">We have all sorts of hotels, ranging from luxury to cheap, so whatever be
+                    your requirement, you will get the accommodation. When you find the hotel of your choice, just click
+                    on its name to see its detailed description. Apart from Goa, our database includes myriad properties
+                    in all holiday and business destinations in India. Our payment gateway is totally secure, so all
+                    your bank details are safe. A smooth transfer process means that making payment is as swift as
+                    searching the hotel. So, whether you are looking for budget or upscale hotels in Delhi, Shimla,
+                    Mumbai, Chennai or any other destination, visit Makemytrip, and get the best deal.</div>
+            </div>
+        </section>
+    </div>
+
+    <!--  --------------Footer Portion-Bottom Box HTML---------------  -->
+    <div class="footer-bottom boxshadow">
+        <section class="footer-bottom-inner-box max-container-size flex-box">
+            <div class="cursor-pointer icons">
+                <i class="fa fa-twitter" style="font-size: 32px; color: white"></i>
+                <i class="fa fa-facebook-f" style="font-size: 30px; color: white"></i>
+            </div>
+            <div class="mmt-copy-right flex-box ">
+                <div>© 2023 GO-TRIP PVT. LTD.</div>
+                <div class="cursor-pointer">Country India</div>
+            </div>
+        </section>
+    </div>
+
+</body>
+
+</html>

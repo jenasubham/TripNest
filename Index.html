@@ -1,0 +1,1169 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Go Trip | Home</title>
+    <link rel="stylesheet" href="./CSS/color.css" />
+    <link rel="stylesheet" href="./CSS/MainPageStyle.css" />
+    <script src="./JS/index.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link
+      href="//fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header>
+      <a href="#" class="logo inverted"><i class="bx bxs-plane-alt"></i></a>
+
+      <ul class="navbar">
+        <div class="login">
+          <div class="login_btn rin">
+            <button class="click_login_btn">
+              Login or Create Account
+              <i
+                class="bx bxs-chevron-down"
+                style="font-size: 15px; color: white"
+              ></i>
+            </button>
+          </div>
+        </div>
+
+        <div>
+          <input type="checkbox" class="checkbox" id="chk" />
+          <label class="label" for="chk">
+            <i class="bx bx-moon"></i>
+            <i class="bx bx-sun"></i>
+            <div class="ball"></div>
+          </label>
+        </div>
+      </ul>
+    </header>
+
+    <!-- ==================LOGIN POPUP STARTS FROM HERE====================== -->
+
+    <div class="login_overlay"></div>
+    <div class="login_container" id="login_container">
+      <div class="form-container sign-up-container">
+        <form action="#">
+          <h1 class="heading">Create Account</h1>
+
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input
+                type="text"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Name</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="email"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Email</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="password"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Password</label>
+              <img
+                class="password_hide toggle-password-visibility__toggle"
+                onclick="show_hide_password(0)"
+                src="./icons/loginFormIcons/icons-eye-show.png"
+              />
+            </div>
+
+            <p class="text">
+              By signing up, I agree to the
+              <a href="#">Terms of Services</a> and
+              <a href="#">Privacy Policy</a>
+            </p>
+          </div>
+
+          <button class="btn">Sign Up</button>
+        </form>
+      </div>
+      <div class="form-container sign-in-container">
+        <form action="#">
+          <h1 class="heading">Sign in</h1>
+          <div class="actual-form">
+            <div class="input-wrap">
+              <input
+                type="email"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Email</label>
+            </div>
+
+            <div class="input-wrap">
+              <input
+                type="password"
+                minlength="4"
+                class="input-field"
+                autocomplete="off"
+                required
+              />
+              <label>Password</label>
+              <img
+                class="password_hide toggle-password-visibility__toggle"
+                onclick="show_hide_password(1)"
+                src="./icons/loginFormIcons/icons-eye-show.png"
+              />
+            </div>
+          </div>
+          <a href="#" class="forgot">Forgot your password?</a>
+          <button class="btn">Sign In</button>
+
+          <p class="text">
+            Forgotten your password or you login datails?
+            <a href="#">Get help</a> signing in
+          </p>
+        </form>
+      </div>
+      <div class="overlay-container" id="overlayCon">
+        <div class="overlay">
+          <div class="overlay-panel overlay-left">
+            <h1>Welcome Back!</h1>
+            <p>
+              To keep connected with us please login with your personal info
+            </p>
+            <button class="ghost" id="singIn">Sign In</button>
+          </div>
+          <div class="overlay-panel overlay-right">
+            <h1>Hello, Friend!</h1>
+            <p>Enter your personal details and start journey with us</p>
+            <button class="ghost" id="singUp">Sign Up</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- js code for the login form POPUP -->
+    <script>
+      const login_btn = document.querySelector(".click_login_btn");
+      const login_overlay = document.querySelector(".login_overlay");
+      const login_container = document.getElementById("login_container");
+      const singUpButton = document.getElementById("singUp");
+      const singInButton = document.getElementById("singIn");
+
+      const inputs = document.querySelectorAll(".input-field");
+
+      // Function FOR LOGIN POPUP
+      function showLoginForm() {
+        document.querySelector(".login_overlay").classList.add("showoverlay");
+        document
+          .querySelector(".login_container")
+          .classList.add("showloginform");
+      }
+
+      login_btn.addEventListener("click", showLoginForm);
+
+      function closeLoginForm() {
+        document
+          .querySelector(".login_overlay")
+          .classList.remove("showoverlay");
+        document
+          .querySelector(".login_container")
+          .classList.remove("showloginform");
+      }
+      login_overlay.addEventListener("click", closeLoginForm);
+
+      inputs.forEach((inp) => {
+        inp.addEventListener("focus", () => {
+          inp.classList.add("active");
+        });
+        inp.addEventListener("blur", () => {
+          if (inp.value != "") return;
+          inp.classList.remove("active");
+        });
+      });
+
+      singUpButton.addEventListener("click", () => {
+        login_container.classList.add("right-panel-active");
+      });
+      singInButton.addEventListener("click", () => {
+        login_container.classList.remove("right-panel-active");
+      });
+
+      // Function for show Password
+      const show_hide_password = (i) => {
+        const input = document.querySelectorAll(
+          ".toggle-password-visibility__toggle"
+        )[i].previousElementSibling.previousElementSibling;
+        const type = input.getAttribute("type");
+        input.setAttribute("type", type === "text" ? "password" : "text");
+
+        var image = document.querySelectorAll(
+          ".toggle-password-visibility__toggle"
+        )[i];
+        if (image.src.match("show")) {
+          image.src = "./icons/loginFormIcons/icons-eye-hide.svg";
+        } else {
+          image.src = "./icons/loginFormIcons/icons-eye-show.png";
+        }
+      };
+    </script>
+
+
+
+
+
+
+    <!-- ==================TOP  BLUE  BOX DETAILS STARTS FROM HERE====================== -->
+    <section id="bgcolor">
+      <!-- ===========================1ST PORTION STARTS============================ -->
+
+      <div class="mid_portion fle">
+        <div class="allicon rin flex" id="All_icon">
+          <ul class="seprate_elements top_nav_bar">
+            <li onclick="a()">
+              <img
+                class="flight"
+                src="./icons/allnavicon/icons8-airplane-take-off-50.png"
+                alt=""
+              />
+              <p>Flight</p>
+            </li>
+
+            <li>
+              <a href="./html/hotels.html" target="_blank">
+                <img src="./icons/allnavicon/icons8-hotel-50.png" alt="" />
+                <p>Hotels</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="./html/homestays.html" target="_blank">
+                <img
+                  src="./icons/allnavicon/icons8-house-with-a-garden-50.png"
+                  alt=""
+                />
+                <p>Homestays</p>
+              </a>
+            </li>
+
+            <li>
+              <a href="./html/holiday-packages.html" target="_blank">
+                <img src="./icons/allnavicon/icons8-balloon-5011.png" alt="" />
+                <p>Packages</p>
+              </a>
+            </li>
+
+            <li>
+              <img src="./icons/allnavicon/icons8-locomotive-50.png" alt="" />
+              <p>Trains</p>
+            </li>
+            <li>
+              <img src="./icons/allnavicon/icons8-bus-50.png" alt="" />
+              <p>Buses</p>
+            </li>
+            <li>
+              <img src="./icons/allnavicon/icons8-taxi-50.png" alt="" />
+              <p>Cabs</p>
+            </li>
+            <!-- <li>
+            <img
+              src="./icons/allnavicon/icons8-money-yours-50.png"
+              alt=""
+            />
+            <p>Forex</p>
+          </li> -->
+            <!-- <li>
+            <img src="./icons/allnavicon/icons8-airplane-50.png" alt="" />
+            <p>Charter</p>
+          </li> -->
+
+            <!-- <li>
+            <img src="./icons/allnavicon/icons8-trekking-50.png" alt="" />
+            <p>Activities</p>
+          </li> -->
+          </ul>
+        </div>
+      </div>
+      <!-- ===========================1ST PORTION ENDS============================ -->
+
+      <!-- ===========================2ND PORTION STARTS============================ -->
+      <div class="wrapper rin">
+        <div class="all_radio_btn flex space_between">
+          <div class="all_radio_btn">
+            <ul>
+              <li>
+                <input name="tripSide" type="radio" id="oneway" checked />
+                <label for="oneway">ONE WAY</label>
+              </li>
+
+              <li>
+                <input name="tripSide" type="radio" id="roundTrip"/>
+                <label for="roundTrip">ROUND TRIP</label>
+              </li>
+
+              <li>
+                <input name="tripSide" type="radio" id="multicity" />
+                <label for="multicity">MULTICITY</label>
+              </li>
+            </ul>
+          </div>
+          <div>Book International and Domestic Flights</div>
+        </div>
+
+        <div class="mid_part flex space_evenly">
+          <label class="first_box all_Box widthtf" id="flight_from">
+            <h4>FROM</h4>
+            <h1 id="City-Name">Delhi</h1>
+            <p>
+              <span id="Airport-Code">DEL</span>,<span id="Airport-Name">
+                Delhi Airport India</span
+              >
+            </p>
+          </label>
+          <div class="hide_element Searching_box">
+            <!-- ======================================================= -->
+            <div class="box_one">
+              <div class="flex space_between" id="input_outer">
+                <div>
+                  <i
+                    class="fa fa-search"
+                    style="font-size: 21px; color: grey"
+                  ></i>
+                </div>
+                <div id="Input_div">
+                  <input type="text" id="input_box_from" placeholder="FROM" />
+                </div>
+              </div>
+              <div id="All_data">
+                <p style="font-size: 12px; margin: 9px">RECENT SEARCH</p>
+              </div>
+            </div>
+            <!-- ============================================== -->
+          </div>
+
+          <label class="all_Box widthtf" id="flight_to">
+            <h4>TO</h4>
+            <h1 id="City-Name1">Kolkata</h1>
+            <p>
+              <span id="Airport-Code1">CCU</span>,<span id="Airport-Name1"
+                >NSCB</span
+              >
+            </p>
+          </label>
+          <div class="hide_element Searching_box1">
+            <!-- ======================================================= -->
+            <div class="box_one1">
+              <div class="flex space_between" id="input_outer1">
+                <div>
+                  <i
+                    class="fa fa-search"
+                    style="font-size: 21px; color: grey"
+                  ></i>
+                </div>
+                <div id="Input_div1">
+                  <input type="text" id="input_box_from1" placeholder="To" />
+                </div>
+              </div>
+              <div id="All_data1">
+                <p style="font-size: 12px; margin: 9px">RECENT SEARCH</p>
+              </div>
+            </div>
+            <!-- ============================================== -->
+          </div>
+
+          <div class="all_Box CalenderBox" id="Section_to">
+            <h4>
+              DEPARTURE
+              <i
+                class="fa fa-angle-down"
+                style="font-size: 20px; color: rgb(54, 82, 193)"
+              ></i>
+            </h4>
+            <div class="error_date" style="color: red; display: none">
+              *select day name
+            </div>
+            <div class="flex Dateposition">
+              <h1 class="month_day">26</h1>
+              <span class="month_name"> Jan </span
+              ><span class="year_number">2023</span>
+            </div>
+            <p class="day_to_display">Thu</p>
+          </div>
+
+          <div class="all_Box CalenderBox">
+            <h4>
+              RETURN
+              <i
+                class="fa fa-angle-down"
+                style="font-size: 20px; color: rgb(54, 82, 193)"
+              ></i>
+            </h4>
+            <!-- <h1>Delhi</h1> -->
+            <p>Tap to add the date</p>
+          </div>
+
+          <div
+            class="all_Box rightMost"
+            style="border: none"
+            id="Travellers_count"
+          >
+            <h4>
+              TRAVELLERS & CLASS
+              <i
+                class="fa fa-angle-down"
+                style="font-size: 20px; color: rgb(54, 82, 193)"
+              ></i>
+            </h4>
+
+            <div>
+              <strong><span class="travel-number">1</span></strong>
+              <span> TRAVELLERS </span>
+            </div>
+
+            <p class="Same_font" id="class-type">Economy/Premium Economy</p>
+            <p class="Same_font" id="golden_text">Group Booking Available</p>
+          </div>
+        </div>
+
+        <!-- ===========================2ND PORTION ENDS============================ -->
+        <!-- ===========================3RD PORTION STARTS============================ -->
+
+        <div class="search_button flex">
+          <a href="./html/searchPage.html"><button>SEARCH</button></a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ==================TOP BOX DETAILS ENDS FROM HERE====================== -->
+<script>
+  const tripType = document.getElementsByName("tripSide");
+  const radioType =()=>{
+    let selected = document.querySelector("input[name='tripSide']:checked");
+    console.log(selected);
+  }
+
+  tripType.forEach(radio => { 
+    radio.addEventListener("click",radioType)
+  })
+</script>
+
+
+
+
+
+    <div class="Advertisement flex">
+      <img src="./images/homepageallimages/ads.webp" alt="" />
+    </div>
+
+
+
+
+
+     <!-- ===============SLIDER STARTS FROM HERE========================= -->
+     <div class="slider_main">
+            <ul>
+              <li><h1>Offers</h1></li>
+    
+              <li><h4>ALL OFFERS</h4></li>
+              <li><h4>FLIGHTS</h4></li>
+              <li><h4>HOTELS</h4></li>
+              <li><h4>HOLIDAYS</h4></li>
+              <li><h4>TRAINS</h4></li>
+              <li><h4>CABS</h4></li>
+              <li><h4>BANK OFFERS</h4></li>
+              <li><h4>OTHERS</h4></li>
+            </ul>
+            <hr />
+    
+            <div class="two_div">
+              <div>
+                <div class="slider-container">
+                  <div class="slider">
+                    <div class="slides">
+                      <div id="slides__1" class="slide">
+    
+                        <span class="slide__text"></span>
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <a
+                              href="./html/pleasant-journey-sale.html"
+                              target="_blank"
+                              class="font_color"
+                              >View Details</a
+                            >
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_02.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>
+                              <a
+                                href="./html/malaysia-airlines-offer.html"
+                                target="_blank"
+                                class="font_color"
+                                >View Details</a
+                              >
+                            </p>
+                          </div>
+                        </div>
+    
+    
+                        
+    
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_03.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_04.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__2" class="slide">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_05.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_06.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                       
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_07.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_08.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__3" class="slide koko">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_09.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_10.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                         
+                        
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_11.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_12.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+    
+                      <div id="slides__4" class="slide">
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                        
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+    
+                        <div class="flex rin ads_box">
+                          <div class="image_cont">
+                            <div>
+                              <img
+                                src="./images/homepageallimages/slider_images_01.webp"
+                                alt=""
+                              />
+                            </div>
+                            <p>T&C Apply</p>
+                          </div>
+    
+                          <div class="div_text_content">
+                            <p>Lorem ipsum dolor sit.</p>
+                            <h2>Lorem ipsum dolor sit amet.</h2>
+                            <p>Lorem ipsum dolor sit.</p>
+                            <p>View Details</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+     </div> 
+    <!-- ===============SLIDER ENDS FROM HERE========================= -->
+
+
+
+
+    <section class="text-gray-600 body-font">
+      <div class="container px-5 py-20 mx-auto">
+
+        <div class="main-titles-head ">
+          <h3 class="header-name">Top Travelling Destinations
+          </h3>
+          <p class="tiltle-para ">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic fuga sit
+            illo modi aut aspernatur tempore laboriosam saepe dolores eveniet.</p>
+        </div>
+
+        <div class="flex flex-wrap -m-4">
+          <div class="p-4 md:w-1/4">
+            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="images/b1.jpg" alt="blog">
+              <div class="p-6">
+                <h1 class="title-font text-xl font-semibold  mb-3">South Island</h1>
+
+                <div class="blog-date pb-6 pt-2 text-sm">
+                  <span class="pos-date pr-4"><i class='bx bx-time'></i> 7 Days</span>
+                  <span class="pos-date pl-20 ml-10"><i class='bx bxs-user'></i> Max People : 5</span>
+                </div>
+
+                <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati blanditiis facere architecto expedita ea.</p>
+                <hr>
+                <div class="flex items-center flex-wrap pt-5">
+                  <h4 class="text-lg font-medium text-cyan-400 flex-1">from $525</h4>
+                  <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4">
+            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="images/b2.jpg" alt="blog" >
+              <div class="p-6">
+                <h1 class="title-font text-xl font-semibold  mb-3">New Zealand</h1>
+                <div class="blog-date pb-6 pt-2 text-sm">
+                  <span class="pos-date pr-4"><i class='bx bx-time'></i> 10 Days</span>
+                  <span class="pos-date pl-20 ml-10"><i class='bx bxs-user'></i> Max People : 4</span>
+                </div>
+                <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati blanditiis facere architecto expedita ea.</p>
+                <hr>
+                <div class="flex items-center flex-wrap pt-5">
+                  <h4 class="text-lg font-medium text-cyan-400 flex-1">from $525</h4>
+                  <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4">
+            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="images/b4.jpg" alt="blog">
+              <div class="p-6">
+                <h1 class="title-font text-xl font-semibold  mb-3">Maldives</h1>
+                <div class="blog-date pb-6 pt-2 text-sm">
+                  <span class="pos-date pr-4"><i class='bx bx-time'></i> 3 Days</span>
+                  <span class="pos-date pl-20 ml-10"><i class='bx bxs-user'></i> Max People : 2</span>
+                </div>
+                <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati blanditiis facere architecto expedita ea.</p>
+                <hr>
+                <div class="flex items-center flex-wrap pt-5">
+                  <h4 class="text-lg font-medium text-cyan-400 flex-1">from $525</h4>
+                  <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="p-4 md:w-1/4">
+            <div class="h-full border-2 border-gray-200 border-opacity-60 rounded-lg overflow-hidden">
+              <img class="lg:h-48 md:h-36 w-full object-cover object-center" src="images/b3.jpg" alt="blog">
+              <div class="p-6">
+                <h1 class="title-font text-xl font-semibold  mb-3">Goa</h1>
+                <div class="blog-date pb-6 pt-2 text-sm">
+                  <span class="pos-date pr-4"><i class='bx bx-time'></i> 3 Days</span>
+                  <span class="pos-date pl-20 ml-10"><i class='bx bxs-user'></i> Max People : 2</span>
+                </div>
+                <p class="leading-relaxed mb-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Obcaecati blanditiis facere architecto expedita ea.</p>
+                <hr>
+                <div class="flex items-center flex-wrap pt-5">
+                  <h4 class="text-lg font-medium text-cyan-400 flex-1">from $525</h4>
+                  <a class="text-indigo-500 inline-flex items-center md:mb-2 lg:mb-0">Learn More
+                    <svg class="w-4 h-4 ml-2" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M5 12h14"></path>
+                      <path d="M12 5l7 7-7 7"></path>
+                    </svg>
+                  </a>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
+
+    <section class="booking-form">
+          <div class="booking-form-content">
+            <div class="main-titles-head">
+              <h3 class="header-name">
+                Get the Best Holiday Planned by Experts!
+              </h3>
+              <p class="tiltle-para">
+                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Hic
+                fuga sit illo modi aut aspernatur tempore laboriosam saepe
+                dolores eveniet.
+              </p>
+            </div>
+
+            <form method="post">
+              <div class="row book-form">
+                <div class="form-input">
+                  <label>Name</label>
+                  <div class="select-menu">
+                      <input class="select-btn" type="text" name="" id="">
+                  </div>
+                </div>
+
+                <div class="form-input  ">
+                  <label>Destination</label>
+                  <div class="select-menu">
+                    <div class="select-btn" onclick="demo(0)">
+                      <span class="sBtn-text">Select your option</span>
+                      <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                    <ul class="options">
+                      <li class="option">
+                        <span class="option-text">Africa</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">London</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Europe</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Asia</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Dubai</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="form-input  ">
+                  <label>Activity</label>
+                  <div class="select-menu">
+                    <div class="select-btn" onclick="demo(1)">
+                      <span class="sBtn-text">Select your option</span>
+                      <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                    <ul class="options">
+                      <li class="option">
+                        <span class="option-text">City Tours</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Wild &amp; Adventure Tours</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Holiday &amp; Seasonal Tours</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Cultural &amp; Thematic Tours</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">Outdoor Activites</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <div class="form-input ">
+                  <label>Duration</label>
+                  <div class="select-menu">
+                    <div class="select-btn" onclick="demo(2)">
+                      <span class="sBtn-text">Select your option</span>
+                      <i class="bx bx-chevron-down"></i>
+                    </div>
+
+                    <ul class="options">
+                      <li class="option">
+                        <span class="option-text">2 Day Tour</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">2-4 Days Tour</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">5-7 Days Tour</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">7+ Days Tour</span>
+                      </li>
+                      <li class="option">
+                        <span class="option-text">10+ Days Tour</span>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="form-input">
+                  <label>Date</label>
+                  <input type="date" name="" placeholder="Date" required="" />
+                </div>
+
+                <div class="bottom-btn">
+                  <label>Submit</label>
+                  <div>
+                    <button class="btn btn-style btn-primary btn-style">
+                      Submit
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+    </section>
+
+    <script>
+      function demo(i) {
+        const optionMenu = document.querySelectorAll(".select-menu")[i+1];
+        const selectBtn = optionMenu.querySelector(".select-btn");
+        const options = optionMenu.querySelectorAll(".option");
+        const sBtn_text = optionMenu.querySelector(".sBtn-text");
+
+        optionMenu.classList.toggle("active");
+
+        options.forEach((option) => {
+          option.addEventListener("click", () => {
+            let selectedOption = option.querySelector(".option-text").innerText;
+            sBtn_text.innerText = selectedOption;
+
+            optionMenu.classList.remove("active");
+          });
+        });
+      }
+    </script>
+
+<!-- ================================ FOOTER================================== --> 
+
+<div class="footer_part1 flex rin">
+  <div>
+    <h3>Why MakeMyTrip?</h3>
+    <p>
+      Established in 2000, MakeMyTrip has since positioned itself as one
+      of the leading companies, providing great offers, competitive
+      airfares, exclusive discounts, and a seamless online booking
+      experience to many of its customers. The experience of booking your
+      flight tickets, hotel stay, and holiday package through our desktop
+      site or mobile app can be done with complete ease and no hassles at
+      all. We also deliver amazing offers, such as Instant Discounts, Fare
+      Calendar, MyRewardsProgram, MyWallet, and many more while updating
+      them from time to time to better suit our customers’ evolving needs
+      and demands.
+    </p>
+  </div>
+
+  <div>
+    <h3>Booking Flights with MakeMyTrip</h3>
+    <p>
+      Established in 2000, MakeMyTrip has since positioned itself as one
+      of the leading companies, providing great offers, competitive
+      airfares, exclusive discounts, and a seamless online booking
+      experience to many of its customers. The experience of booking your
+      flight tickets, hotel stay, and holiday package through our desktop
+      site or mobile app can be done with complete ease and no hassles at
+      all. We also deliver amazing offers, such as Instant Discounts, Fare
+      Calendar, MyRewardsProgram, MyWallet, and many more while updating
+      them from time to time to better suit our customers’ evolving needs
+      and demands.
+    </p>
+  </div>
+
+  <div>
+    <h3>Domestic Flights with MakeMyTrip</h3>
+    <p>
+      Established in 2000, MakeMyTrip has since positioned itself as one
+      of the leading companies, providing great offers, competitive
+      airfares, exclusive discounts, and a seamless online booking
+      experience to many of its customers. The experience of booking your
+      flight tickets, hotel stay, and holiday package through our desktop
+      site or mobile app can be done with complete ease and no hassles at
+      all. We also deliver amazing offers, such as Instant Discounts, Fare
+      Calendar, MyRewardsProgram, MyWallet, and many more while updating
+      them from time to time to better suit our customers evolving needs
+      and demands.
+    </p>
+  </div>
+</div>
+<!-- ================================ FOOTER================================== --> 
+
+
+      <!-- move to top Starts-->
+  
+  <button id="movetop" onclick="topFunction()">
+    <i class="bx bxs-chevron-up"></i>
+  </button>
+
+<script>
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0;
+    document.documentElement.scrollTop = 0;
+  }
+</script>
+<!-- /move top Ends-->
+
+
+
+  </body>
+</html>
